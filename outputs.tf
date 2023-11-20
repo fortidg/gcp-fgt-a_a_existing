@@ -22,10 +22,6 @@ output "compute_addresses" {
   value = var.enable_output ? google_compute_address.compute_address : null
 }
 
-output "compute_networks" {
-  value = var.enable_output ? data.google_compute_subnetwork.compute_subnetwork[*].network : null
-}
-
 output "compute_subnetworks" {
   value = var.enable_output ? data.google_compute_subnetwork.compute_subnetwork : null
 }
