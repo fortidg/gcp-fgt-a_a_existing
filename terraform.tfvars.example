@@ -1,0 +1,24 @@
+project = "project_name"
+region  = "region_name"
+zone    = "az1 name"
+zone2 = "az2 name"
+untrust_subnet1_name = "existing untrust subnet"
+trust_subnet1_name = "existing trust subnet"
+
+# Prefixed to all resources
+prefix = "resource_prefix"
+
+# FortiGate image and instance type
+# 7.2.6 PAYG is projects/fortigcp-project-001/global/images/fortinet-fgtondemand-726-20231016-001-w-license
+# 7.2.6 BYOL is projects/fortigcp-project-001/global/images/fortinet-fgt-726-20231016-001-w-license
+# 7.4.1 PAYG is projects/fortigcp-project-001/global/images/fortinet-fgtondemand-741-20230905-001-w-license
+# 7.4.1 BYOL is projects/fortigcp-project-001/global/images/fortinet-fgt-741-20230905-001-w-license
+fortigate_vm_image     = "projects/fortigcp-project-001/global/images/fortinet-fgt-741-20230905-001-w-license"
+fortigate_machine_type = "n2-standard-2"
+fortigate_license_files = {
+  fgt1_instance    = { name = null }
+  fgt2_instance = { name = null }
+}
+admin_port = 8443
+fgt_password = "fortinet"
+
