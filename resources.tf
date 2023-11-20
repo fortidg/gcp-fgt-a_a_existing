@@ -194,7 +194,7 @@ resource "google_compute_forwarding_rule" "efwd_rule" {
 resource "google_compute_router" "nat_router" {
   name    = "${var.prefix}-cr-nat-${random_string.string.result}"
   region  = var.region
-  network = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].network
+  network = data.google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].network
 }
 
 resource "google_compute_router_nat" "cloud_nat" {
@@ -204,7 +204,7 @@ resource "google_compute_router_nat" "cloud_nat" {
   nat_ip_allocate_option             = "AUTO_ONLY"
   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
   subnetwork {
-    name                    = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].self_link
+    name                    = data.google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].self_link
     source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
   }
 }

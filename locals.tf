@@ -111,8 +111,8 @@ locals {
 
   compute_firewalls = {
     "untrust-vpc-ingress" = {
-      name               = format("%s-ingress", google_compute_network.compute_network["untrust-vpc"].name)
-      network            = google_compute_network.compute_network["untrust-vpc"].name
+      name               = "${random_string.string.result}ingress-untrust-vpc-allow-all"
+      network            = data.google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].network
       direction          = "INGRESS"
       source_ranges      = ["0.0.0.0/0"]
       destination_ranges = null
@@ -121,8 +121,8 @@ locals {
       }]
     }
     "trust-vpc-ingress" = {
-      name               = format("%s-ingress", google_compute_network.compute_network["trust-vpc"].name)
-      network            = google_compute_network.compute_network["trust-vpc"].name
+      name               = "${random_string.string.result}ingress-trust-vpc-allow-all"
+      network            = data.google_compute_subnetwork.compute_subnetwork["trust-subnet-1"].network
       direction          = "INGRESS"
       source_ranges      = ["0.0.0.0/0"]
       destination_ranges = null
