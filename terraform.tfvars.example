@@ -6,7 +6,7 @@ untrust_subnet1_name = "existing untrust subnet"
 trust_subnet1_name = "existing trust subnet"
 
 # Prefixed to all resources
-prefix = "resource_prefix"
+prefix = "resource-prefix"
 
 # FortiGate image and instance type
 # 7.2.6 PAYG is projects/fortigcp-project-001/global/images/fortinet-fgtondemand-726-20231016-001-w-license
