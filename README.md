@@ -27,6 +27,6 @@ This terraform assumes that customer networks already have firewall rules in pla
 
 https://docs.fortinet.com/document/fortigate/6.4.0/ports-and-protocols/303168/fortigate-open-ports
 
-in addition to those ports, you will need to allow tcp 8008 in both the trust and untrus subnets for the Back End Set Heartbeats.
+In addition to those ports, you will need to allow tcp 8008 in both the trust and untrust subnets to allow heartbeat probes for load balancers.
 
-Conversely, if you wish to allow all you can un-comment the firewall stanzas in resources.tf
+Conversely, if you wish to allow all you can un-comment the firewall stanzas in resources.tf . 
