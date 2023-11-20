@@ -109,28 +109,28 @@ locals {
   # Compute Firewalls
   #######################
 
-  # compute_firewalls = {
-  #   "untrust-vpc-ingress" = {
-  #     name               = format("%s-ingress", google_compute_network.compute_network["untrust-vpc"].name)
-  #     network            = google_compute_network.compute_network["untrust-vpc"].name
-  #     direction          = "INGRESS"
-  #     source_ranges      = ["0.0.0.0/0"]
-  #     destination_ranges = null
-  #     allow = [{
-  #       protocol = "all"
-  #     }]
-  #   }
-  #   "trust-vpc-ingress" = {
-  #     name               = format("%s-ingress", google_compute_network.compute_network["trust-vpc"].name)
-  #     network            = google_compute_network.compute_network["trust-vpc"].name
-  #     direction          = "INGRESS"
-  #     source_ranges      = ["0.0.0.0/0"]
-  #     destination_ranges = null
-  #     allow = [{
-  #       protocol = "all"
-  #     }]
-  #   }
-  # }
+  compute_firewalls = {
+    "untrust-vpc-ingress" = {
+      name               = format("%s-ingress", google_compute_network.compute_network["untrust-vpc"].name)
+      network            = google_compute_network.compute_network["untrust-vpc"].name
+      direction          = "INGRESS"
+      source_ranges      = ["0.0.0.0/0"]
+      destination_ranges = null
+      allow = [{
+        protocol = "all"
+      }]
+    }
+    "trust-vpc-ingress" = {
+      name               = format("%s-ingress", google_compute_network.compute_network["trust-vpc"].name)
+      network            = google_compute_network.compute_network["trust-vpc"].name
+      direction          = "INGRESS"
+      source_ranges      = ["0.0.0.0/0"]
+      destination_ranges = null
+      allow = [{
+        protocol = "all"
+      }]
+    }
+  }
 
   #######################
   # Compute disks

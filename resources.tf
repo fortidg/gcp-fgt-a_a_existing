@@ -32,22 +32,22 @@ resource "google_compute_address" "compute_address" {
 #   ip_cidr_range = each.value.ip_cidr_range
 # }
 
-# resource "google_compute_firewall" "compute_firewall" {
-#   for_each = local.compute_firewalls
+resource "google_compute_firewall" "compute_firewall" {
+  for_each = local.compute_firewalls
 
-#   name               = each.value.name
-#   network            = each.value.network
-#   direction          = each.value.direction
-#   source_ranges      = each.value.source_ranges
-#   destination_ranges = each.value.destination_ranges
+  name               = each.value.name
+  network            = each.value.network
+  direction          = each.value.direction
+  source_ranges      = each.value.source_ranges
+  destination_ranges = each.value.destination_ranges
 
-#   dynamic "allow" {
-#     for_each = each.value.allow
-#     content {
-#       protocol = allow.value.protocol
-#     }
-#   }
-# }
+  dynamic "allow" {
+    for_each = each.value.allow
+    content {
+      protocol = allow.value.protocol
+    }
+  }
+}
 
 resource "google_compute_disk" "compute_disk" {
   for_each = local.compute_disks
@@ -191,23 +191,23 @@ resource "google_compute_forwarding_rule" "efwd_rule" {
 }
 
 # Enable outbound connectivity via Cloud NAT
-# resource "google_compute_router" "nat_router" {
-#   name    = "${var.prefix}-cr-nat-${random_string.string.result}"
-#   region  = var.region
-#   network = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].network
-# }
+resource "google_compute_router" "nat_router" {
+  name    = "${var.prefix}-cr-nat-${random_string.string.result}"
+  region  = var.region
+  network = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].network
+}
 
-# resource "google_compute_router_nat" "cloud_nat" {
-#   name                               = "${var.prefix}nat-cloudnat-${var.region}"
-#   router                             = google_compute_router.nat_router.name
-#   region                             = var.region
-#   nat_ip_allocate_option             = "AUTO_ONLY"
-#   source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
-#   subnetwork {
-#     name                    = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].self_link
-#     source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
-#   }
-# }
+resource "google_compute_router_nat" "cloud_nat" {
+  name                               = "${var.prefix}nat-cloudnat-${var.region}"
+  router                             = google_compute_router.nat_router.name
+  region                             = var.region
+  nat_ip_allocate_option             = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+  subnetwork {
+    name                    = google_compute_subnetwork.compute_subnetwork["untrust-subnet-1"].self_link
+    source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
+  }
+}
 
 #enable all traffic to ilb
 resource "google_compute_route" "default_route" {
