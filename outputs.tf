@@ -23,11 +23,11 @@ output "compute_addresses" {
 }
 
 output "compute_networks" {
-  value = var.enable_output ? google_compute_network.compute_network : null
+  value = var.enable_output ? dada.google_compute_network.compute_network : null
 }
 
 output "compute_subnetworks" {
-  value = var.enable_output ? google_compute_subnetwork.compute_subnetwork : null
+  value = var.enable_output ? data.google_compute_subnetwork.compute_subnetwork : null
 }
 
 # output "compute_firewalls" {
