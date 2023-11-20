@@ -23,7 +23,7 @@ output "compute_addresses" {
 }
 
 output "compute_networks" {
-  value = var.enable_output ? dada.google_compute_network.compute_network : null
+  value = var.enable_output ? data.google_compute_subnetwork.compute_subnetwork[*].network : null
 }
 
 output "compute_subnetworks" {
