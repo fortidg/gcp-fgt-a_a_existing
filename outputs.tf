@@ -30,9 +30,9 @@ output "compute_subnetworks" {
   value = var.enable_output ? google_compute_subnetwork.compute_subnetwork : null
 }
 
-output "compute_firewalls" {
-  value = var.enable_output ? google_compute_firewall.compute_firewall : null
-}
+# output "compute_firewalls" {
+#   value = var.enable_output ? google_compute_firewall.compute_firewall : null
+# }
 
 output "compute_disks" {
   value = var.enable_output ? google_compute_disk.compute_disk : null
