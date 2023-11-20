@@ -73,24 +73,7 @@ locals {
     }
   }
 
-  #######################
-  # Compute Networks
-  #######################
-
-  # compute_networks = {
-  #   "untrust-vpc" = {
-  #     region                  = local.region
-  #     name                    = "${local.prefix}-untrust-vpc-${random_string.string.result}"
-  #     auto_create_subnetworks = false
-  #     routing_mode            = "REGIONAL"
-  #   }
-  #   "trust-vpc" = {
-  #     region                  = local.region
-  #     name                    = "${local.prefix}-trust-vpc-${random_string.string.result}"
-  #     auto_create_subnetworks = false
-  #     routing_mode            = "REGIONAL"
-  #   }
-  # }
+  
   #######################
   # Compute Subnets
   #######################

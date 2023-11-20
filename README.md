@@ -22,3 +22,11 @@ FortiGates can be managed by putting `https://<fortigate-public-ip>:8443` into t
 
 
 This terraform will use existing customer subnets/networks.  It is assumed that Cloud NAT router and cloud nat are already configured in the "untrust" subnet.  If that is not the case, un-comment those stanzas in the resources.tf file.
+
+This terraform assumes that customer networks already have firewall rules in place.  You will need to update them based on the below link:
+
+https://docs.fortinet.com/document/fortigate/6.4.0/ports-and-protocols/303168/fortigate-open-ports
+
+in addition to those ports, you will need to allow tcp 8008 in both the trust and untrus subnets for the Back End Set Heartbeats.
+
+Conversely, if you wish to allow all you can un-comment the firewall stanzas in resources.tf
